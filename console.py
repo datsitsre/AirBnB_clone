@@ -150,7 +150,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) < 3:
             print("** attribute name missing **")
         elif len(args) < 4:
-           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 print("** value missing **")
+            print("** value missing **")
         else:
             key = args[0]+"."+args[1]
             attr = args[2]
