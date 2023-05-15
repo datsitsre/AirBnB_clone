@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-from models.base_model import BaseModel
+
 import os 
 import models
+from models.base_model import BaseModel
 import unittest
 from time import sleep
 from datetime import datetime
