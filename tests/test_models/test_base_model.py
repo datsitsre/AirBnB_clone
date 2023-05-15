@@ -1,10 +1,13 @@
 #!/usr/bin/python3
-from models.base_model import BaseModel
+
 import os 
 import models
+from models.base_model import BaseModel
 import unittest
 from time import sleep
 from datetime import datetime
+BaseModel = models.base_model.BaseModel
+module_doc = models.base_model.__doc__
 
 
 
