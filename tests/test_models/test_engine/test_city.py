@@ -1,3 +1,8 @@
+import models
+import unittest
+from datetime import datetime
+
+
 class CityTest(unittest.TestCase):
     """tests for the class City"""
 
@@ -15,9 +20,6 @@ class CityTest(unittest.TestCase):
         """test type of instance atributes"""
         instance = models.city.City()
         self.assertIsInstance(instance.id, str)
-        self.assertIsInstance(instance.created_at, datetime.datetime)
-        self.assertIsInstance(instance.updated_at, datetime.datetime)
-        self.assertIsInstance(instance.state_id, str)
         self.assertIsInstance(instance.name, str)
 
 

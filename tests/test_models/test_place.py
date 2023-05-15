@@ -7,8 +7,8 @@ Unittest for test_place
 import models
 import os
 import unittest
-from datetiem import datetime
-from models.place import
+from datetime import datetime
+from models.place import Place
 from time import sleep
 
 
@@ -243,5 +243,5 @@ class TestPlace_to_dict(unittest.TestCase):
             pl.to_dict(None)
 
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     unittest.main()

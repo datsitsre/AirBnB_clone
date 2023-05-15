@@ -7,7 +7,7 @@
 import models
 import unittest
 import os
-import models.amenity import Amenity
+from models.amenity import Amenity
 from time import sleep
 from datetime import datetime
 

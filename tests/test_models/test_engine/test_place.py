@@ -32,8 +32,8 @@ class PlaceTest(unittest.TestCase):
         self.assertIsInstance(instance.longitude, float)
         self.assertIsInstance(instance.amenity_ids, list)
 
-     def test_class(self):
-        """test instance class"""
+    def test_class(self):
+        """est instance class"""
         instance = models.place.Place()
         self.assertIsInstance(instance, models.place.Place)
 

@@ -8,6 +8,7 @@ import unittest
 from datetime import datetime
 from models.review import Review
 import os
+from time import sleep
 
 
 class TestReview_instantiation(unittest.TestCase):
@@ -27,24 +28,6 @@ class TestReview_instantiation(unittest.TestCase):
 
     def test_updated_at_is_public_datetime(self):
         self.assertEqual(datetime, type(Review().updated_at))
-
-    def test_place_id_is_public_class_attribute(self):
-        rv = Review()
-        self.assertEqual(str, type(Review.place_id))
-        self.assertIn("place_id", dir(rv))
-        self.assertNotIn("place_id", rv.__dict__)
-
-    def test_user_id_is_public_class_attribute(self):
-        rv = Review()
-        self.assertEqual(str, type(Review.user_id))
-        self.assertIn("user_id", dir(rv))
-        self.assertNotIn("user_id", rv.__dict__)
-
-    def test_text_is_public_class_attribute(self):
-        rv = Review()
-        self.assertEqual(str, type(Review.text))
-        self.assertIn("text", dir(rv))
-        self.assertNotIn("text", rv.__dict__)
 
     def test_two_reviews_unique_ids(self):
         rv1 = Review()

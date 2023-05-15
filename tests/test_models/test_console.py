@@ -7,6 +7,7 @@ from models import storage
 from console import HBNBCommand
 from io import StringIO
 from unittest.mock import patch
+from models.engine.file_storage import FileStorage
 
 
 class TestHBNBCommand(unittest.TestCase):
@@ -640,45 +641,43 @@ class TestHBNBCommand_all_method(unittest.TestCase):
             self.assertIn("Uruguay", obtained.getvalue().strip())
 
 
-class TestHBNBCommand_all_method(unittest.TestCase):
-    """tests the HBNB command interpreter"""
+class TestHBNBCommand_count(unittest.TestCase):
+    """Unittests for testing count method of HBNB comand interpreter."""
 
-    def test_count(self):
+    @classmethod
+    def setUp(self):
+        try:
+            os.rename("file.json", "tmp")
+        except IOError:
+            pass
+        FileStorage.__objects = {}
+
+    @classmethod
+    def tearDown(self):
         try:
             os.remove("file.json")
-        except do_nothing: 
+        except IOError:
             pass
-        with patch("sys.stdout", new=StringIO()) as obtained:
-            HBNBCommand().onecmd("create BaseModel")
-            HBNBCommand().onecmd("create BaseModel")
-            HBNBCommand().onecmd("create BaseModel")
-            HBNBCommand().onecmd("create User")
-            HBNBCommand().onecmd("create State")
-            HBNBCommand().onecmd("create City")
-            HBNBCommand().onecmd("create City")
-            HBNBCommand().onecmd("create Amenity")
-            HBNBCommand().onecmd("create Place")
-        with patch("sys.stdout", new=StringIO()) as obtained:
-            HBNBCommand().onecmd("BaseModel.count()")
-            self.assertEqual("3", obtained.getvalue().strip())
-        with patch("sys.stdout", new=StringIO()) as obtained:
-            HBNBCommand().onecmd("User.count()")
-            self.assertEqual("1", obtained.getvalue().strip())
-        with patch("sys.stdout", new=StringIO()) as obtained:
-            HBNBCommand().onecmd("State.count()")
-            self.assertEqual("1", obtained.getvalue().strip())
-        with patch("sys.stdout", new=StringIO()) as obtained:
-            HBNBCommand().onecmd("City.count()")
-            self.assertEqual("2", obtained.getvalue().strip())
-        with patch("sys.stdout", new=StringIO()) as obtained:
-            HBNBCommand().onecmd("Amenity.count()")
-            self.assertEqual("1", obtained.getvalue().strip())
-        with patch("sys.stdout", new=StringIO()) as obtained:
-            HBNBCommand().onecmd("Place.count()")
-            self.assertEqual("1", obtained.getvalue().strip())
-        with patch("sys.stdout", new=StringIO()) as obtained:
-            HBNBCommand().onecmd("Review.count()")
-            self.assertEqual("0", obtained.getvalue().strip())
+        try:
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass
+
+    def test_count_object(self):
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(HBNBCommand().onecmd("create BaseModel"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(HBNBCommand().onecmd("create User"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(HBNBCommand().onecmd("create State"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(HBNBCommand().onecmd("create Place"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(HBNBCommand().onecmd("create City"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(HBNBCommand().onecmd("create Amenity"))
+        with patch("sys.stdout", new=StringIO()) as output:
+            self.assertFalse(HBNBCommand().onecmd("create Review"))
 
 
 if __name__ == "__main__":

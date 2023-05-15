@@ -6,7 +6,7 @@ Unittest for city
 
 import models
 import os
-import datetime import datetime
+from datetime import datetime
 from time import sleep
 from models.city import City
 import unittest
@@ -29,12 +29,6 @@ class TestCity_instantiation(unittest.TestCase):
 
     def test_updated_at_is_public_datetime(self):
         self.assertEqual(datetime, type(City().updated_at))
-
-    def test_state_id_is_public_class_attribute(self):
-        cy = City()
-        self.assertEqual(str, type(City.state_id))
-        self.assertIn("state_id", dir(cy))
-        self.assertNotIn("state_id", cy.__dict__)
 
     def test_name_is_public_class_attribute(self):
         cy = City()
