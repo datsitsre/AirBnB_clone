@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import os 
+import os
 import models
 from models.base_model import BaseModel
 import unittest
@@ -8,7 +8,6 @@ from time import sleep
 from datetime import datetime
 BaseModel = models.base_model.BaseModel
 module_doc = models.base_model.__doc__
-
 
 
 class TestBaseModel_instantiation(unittest.TestCase):
@@ -81,6 +80,7 @@ class TestBaseModel_instantiation(unittest.TestCase):
         self.assertEqual(bm.id, "345")
         self.assertEqual(bm.created_at, dt)
         self.assertEqual(bm.updated_at, dt)
+
 
 class TestBaseModel_save(unittest.TestCase):
     """Unittests for testing save method of the BaseModel class."""
@@ -182,6 +182,7 @@ class TestBaseModel_to_dict(unittest.TestCase):
         bm = BaseModel()
         with self.assertRaises(TypeError):
             bm.to_dict(None)
+
 
 if __name__ == "__main__":
     unittest.main()
