@@ -15,23 +15,6 @@ from models.place import Place
 from models.review import Review
 
 
-class_list = {
-              "BaseModel": BaseModel,
-              "State": State,
-              "City": City,
-              "Amenity": Amenity,
-              "Place": Place,
-              "Review": Review
-             }
-white_list = []
-for key in class_list:
-    white_list.append(key)
-commands = ["do_show",
-            "do_destroy",
-            "do_all",
-            "do_update",
-            "do_count"
-            ]
 
 
 class HBNBCommand(cmd.Cmd):
@@ -39,6 +22,25 @@ class HBNBCommand(cmd.Cmd):
         Main command
     """
     prompt = "(hbnb) "
+
+    class_list = {
+                  "BaseModel": BaseModel,
+                  "State": State,
+                  "City": City,
+                  "Amenity": Amenity,
+                  "Place": Place,
+                  "Review": Review
+                 }
+
+    white_list = []
+    for key in class_list:
+        white_list.append(key)
+    commands = ["do_show",
+                "do_destroy",
+                "do_all",
+                "do_update",
+                "do_count"
+            ]
 
     def emptyline(self):
         """ Emplty line """
@@ -52,6 +54,9 @@ class HBNBCommand(cmd.Cmd):
         """ End of File """
         print("")
         return True
+    def do_nothing(self, arg):
+        """ Do nothing when no arg is entered """
+        pass
 
     def do_create(self, arg):
         """
