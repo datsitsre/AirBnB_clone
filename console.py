@@ -15,8 +15,6 @@ from models.place import Place
 from models.review import Review
 
 
-
-
 class HBNBCommand(cmd.Cmd):
     """
         Main command
@@ -39,8 +37,7 @@ class HBNBCommand(cmd.Cmd):
                 "do_destroy",
                 "do_all",
                 "do_update",
-                "do_count"
-            ]
+                "do_count"]
 
     def emptyline(self):
         """ Emplty line """
@@ -54,6 +51,7 @@ class HBNBCommand(cmd.Cmd):
         """ End of File """
         print("")
         return True
+
     def do_nothing(self, arg):
         """ Do nothing when no arg is entered """
         pass
