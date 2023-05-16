@@ -40,10 +40,6 @@ class HBNBCommand(cmd.Cmd):
     """
     prompt = "(hbnb) "
 
-    def do_nothing(self, arg):
-        """ Empty work """
-        pass
-
     def emptyline(self):
         """ Emplty line """
         pass
