@@ -4,12 +4,12 @@
     Test for the Amenity class
 """
 
-import models
-import unittest
 import os
+import unittest
 from models.amenity import Amenity
 from time import sleep
 from datetime import datetime
+import models
 
 
 class TestAmenity_instantiation(unittest.TestCase):
