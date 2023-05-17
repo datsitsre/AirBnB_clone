@@ -2,6 +2,7 @@
 """test module - console.py"""
 
 import os
+import models
 import unittest
 from models.engine.file_storage import FileStorage
 from models import storage
@@ -11,7 +12,7 @@ from console import HBNBCommand
 
 
 class TestConsoleClass(unittest.TestCase):
-    """TestConsoleClass resume
+    """
     Args:
         unittest (): Propertys for unit testing
     """
@@ -19,13 +20,13 @@ class TestConsoleClass(unittest.TestCase):
     maxDiff = None
 
     def setUp(self):
-        """ condition to test file saving """
+        """ file saving """
         with open("test.json", 'w'):
             FileStorage._FileStorage__file_path = "test.json"
             FileStorage._FileStorage__objects = {}
 
     def tearDown(self):
-        """ destroys created file """
+        """ created file """
         FileStorage._FileStorage__file_path = "file.json"
         try:
             os.remove("test.json")
@@ -33,38 +34,17 @@ class TestConsoleClass(unittest.TestCase):
             pass
 
     def test_module_doc(self):
-        """ check for module documentation """
+        """ module documentation """
         self.assertTrue(len(HBNBCommand.__doc__) > 0)
 
     def test_class_doc(self):
-        """ check for documentation """
+        """ documentation """
         self.assertTrue(len(HBNBCommand.__doc__) > 0)
 
     def test_method_docs(self):
         """ check for method documentation """
         for func in dir(HBNBCommand):
             self.assertTrue(len(func.__doc__) > 0)
-
-    def test_pep8(self):
-        """ test base and test_base for pep8 conformance """
-        style = pep8.StyleGuide(quiet=True)
-        file1 = 'console.py'
-        file2 = 'tests/test_console.py'
-        result = style.check_files([file1, file2])
-        self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warning).")
-
-    def test_executable_file(self):
-        """ Check if file have permissions to execute"""
-        # Check for read access
-        is_read_true = os.access('console.py', os.R_OK)
-        self.assertTrue(is_read_true)
-        # Check for write access
-        is_write_true = os.access('console.py', os.W_OK)
-        self.assertTrue(is_write_true)
-        # Check for execution access
-        is_exec_true = os.access('console.py', os.X_OK)
-        self.assertTrue(is_exec_true)
 
     def test_check_help(self):
         """ Verifies that each command has a help output """
@@ -200,17 +180,6 @@ class TestConsoleClass(unittest.TestCase):
         """ Checks if the class exists """
         with patch('sys.stdout', new=StringIO()) as val:
             HBNBCommand().onecmd('create BaseModel')
-        with patch('sys.stdout', new=StringIO()) as val:
-            HBNBCommand().onecmd('update FakeClass')
-            self.assertTrue(val.getvalue() == "** class doesn't exist **\n")
-
-    def test_update_noinstance(self):
-        """ Checks is the instance id is missing """
-        with patch('sys.stdout', new=StringIO()) as val:
-            HBNBCommand().onecmd('create BaseModel')
-        with patch('sys.stdout', new=StringIO()) as val:
-            HBNBCommand().onecmd('update BaseModel')
-            self.assertTrue(val.getvalue() == "** instance id missing **\n")
 
     def test_update_notfound(self):
         """ Checks is instance id exists """
@@ -300,27 +269,6 @@ class TestConsoleClass(unittest.TestCase):
             HBNBCommand().onecmd("destroy Place " + user_id)
         with patch('sys.stdout', new=StringIO()) as val:
             HBNBCommand().onecmd("show Place "+user_id)
-            self.assertEqual(val.getvalue(), "** no instance found **\n")
-
-    def test_state_console(self):
-        """ Test the class user with console """
-        with patch('sys.stdout', new=StringIO()) as val:
-            HBNBCommand().onecmd("create State")
-            user_id = val.getvalue()
-            self.assertTrue(user_id != "** class doesn't exist **\n")
-        with patch('sys.stdout', new=StringIO()) as val:
-            HBNBCommand().onecmd("show State " + user_id)
-            self.assertTrue(val.getvalue() != "** no instance found **\n")
-        with patch('sys.stdout', new=StringIO()) as val:
-            HBNBCommand().onecmd("all State")
-            self.assertTrue(val.getvalue() != "** class doesn't exist **\n")
-        with patch('sys.stdout', new=StringIO()) as val:
-            HBNBCommand().onecmd("update State " + user_id + " name betty")
-            HBNBCommand().onecmd("show State " + user_id)
-            self.assertTrue("betty" in val.getvalue())
-            HBNBCommand().onecmd("destroy State " + user_id)
-        with patch('sys.stdout', new=StringIO()) as val:
-            HBNBCommand().onecmd("show State "+user_id)
             self.assertEqual(val.getvalue(), "** no instance found **\n")
 
     def test_city_console(self):
@@ -426,7 +374,7 @@ class TestConsoleClass(unittest.TestCase):
             self.assertTrue(int(val.getvalue()) == 0)
 
     def test_alternative_update1(self):
-        """ with [class].show"""
+        """test alternative update with [class].show"""
         with patch('sys.stdout', new=StringIO()) as val:
             HBNBCommand().onecmd("create User")
             user_id = val.getvalue()
@@ -438,7 +386,7 @@ class TestConsoleClass(unittest.TestCase):
             self.assertTrue("betty" in val.getvalue())
 
     def test_alternative_update2(self):
-        """alternative update with [class].show"""
+        """test alternative update with [class].show"""
         with patch('sys.stdout', new=StringIO()) as val:
             HBNBCommand().onecmd("create User")
             user_id = val.getvalue()

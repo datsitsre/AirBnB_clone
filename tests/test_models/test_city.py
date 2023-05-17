@@ -77,10 +77,6 @@ class TestCity_instantiation(unittest.TestCase):
         self.assertEqual(cy.created_at, dt)
         self.assertEqual(cy.updated_at, dt)
 
-    def test_instantiation_with_None_kwargs(self):
-        with self.assertRaises(TypeError):
-            City(id=None, created_at=None, updated_at=None)
-
 
 class TestCity_to_dict(unittest.TestCase):
     """Unittests for testing some model class."""

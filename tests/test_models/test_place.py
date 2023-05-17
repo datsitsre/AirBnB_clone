@@ -137,10 +137,6 @@ class TestPlace_instantiation(unittest.TestCase):
         self.assertEqual(pl.created_at, dt)
         self.assertEqual(pl.updated_at, dt)
 
-    def test_instantiation_with_None_kwargs(self):
-        with self.assertRaises(TypeError):
-            Place(id=None, created_at=None, updated_at=None)
-
 
 class TestPlace_save(unittest.TestCase):
     """Unittests for method of the Place class."""

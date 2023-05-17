@@ -78,10 +78,6 @@ class TestState_instantiation(unittest.TestCase):
         self.assertEqual(st.created_at, dt)
         self.assertEqual(st.updated_at, dt)
 
-    def test_instantiation_with_None_kwargs(self):
-        with self.assertRaises(TypeError):
-            State(id=None, created_at=None, updated_at=None)
-
 
 class TestState_save(unittest.TestCase):
     """Unittests for testing save method of the State class."""

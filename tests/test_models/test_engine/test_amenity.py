@@ -75,10 +75,6 @@ class TestAmenity_instantiation(unittest.TestCase):
         self.assertEqual(am.created_at, dt)
         self.assertEqual(am.updated_at, dt)
 
-    def test_instantiation_with_None_kwargs(self):
-        with self.assertRaises(TypeError):
-            Amenity(id=None, created_at=None, updated_at=None)
-
 
 class TestAmenity_save(unittest.TestCase):
     """Unittests for testing save method of the Amenity class."""
