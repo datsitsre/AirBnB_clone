@@ -25,6 +25,7 @@ commands = ["do_show",
                 "do_count"]
 """
 
+
 class HBNBCommand(cmd.Cmd):
     """
         Main command
