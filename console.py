@@ -13,7 +13,17 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+"""
 
+white_list = []
+for key in class_list:
+    white_list.append(key)
+commands = ["do_show",
+                "do_destroy",
+                "do_all",
+                "do_update",
+                "do_count"]
+"""
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -29,15 +39,6 @@ class HBNBCommand(cmd.Cmd):
                   "Place": Place,
                   "Review": Review
                  }
-
-    white_list = []
-    for key in class_list:
-        white_list.append(key)
-    commands = ["do_show",
-                "do_destroy",
-                "do_all",
-                "do_update",
-                "do_count"]
 
     def emptyline(self):
         """ Emplty line """
@@ -65,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] not in white_list:
+        elif args[0] not in HBNBCommand.class_list.keys():
             print("** class doesn't exist **")
         else:
             for key, value in class_list.items():

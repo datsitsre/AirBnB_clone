@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+import os
+import models
 from models import storage
 from models.base_model import BaseModel
 
