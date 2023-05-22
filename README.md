@@ -47,3 +47,32 @@ file_storage.py - file contains FileStorage class.
 /tests directory contains all unit test cases for this project.
 
 console.py the console contains the entry point of the command interpreter.
+
+Below is Design Tree for the project.
+
+|── console.py
+├── models/
+│   ├── amenity.py
+│   ├── base_model.py
+│   ├── city.py
+│   ├── place.py
+│   ├── review.py
+│   ├── state.py
+│   |── user.py
+│   └── engine/
+│       └── file_storage.py
+└── tests/
+    |── test_console.py
+    └── test_models/
+        ├── test_amenity.py
+        ├── test_base_model.py
+        ├── test_city.py
+        ├── test_place.py
+        ├── test_review.py
+        ├── test_state.py
+        |── test_user.py
+        └── test_engine/
+            └── test_file_storage.py
+
+## Testing
+Unittests for the HolbertonBnB project are defined in the tests folder. To run the entire test suite simultaneously, execute the following command:
