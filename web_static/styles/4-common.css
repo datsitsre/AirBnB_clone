@@ -1,0 +1,16 @@
+html {
+	position: relative;
+        min-height: 100vh;
+}	
+
+body {
+	color: #484848;
+	font-size: 14px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	padding: 0px; margin: 0px
+}
+.container {
+	max-width: 100px;
+	margin: 30px auto;
+	bottom: 30px;
+}
