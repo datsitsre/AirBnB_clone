@@ -1,0 +1,25 @@
+.places {
+	text-align: center;
+	margin: 0;
+}
+.places h1 {
+	vertical-align: top;
+	font-size: 30px;
+	text-align: left;
+	padding: 25px 00 30px;
+	margin: 0;
+}
+.places article {
+	padding: 20px;
+	margin: 20px;
+	width: 390px;
+	border: #FF5A5F solid 1px;
+	border-radius: 4px;
+	display: inline-block;
+	position: relative;
+}
+
+.places 42 {
+	font-size: 30px;
+	text-align: center;
+}
