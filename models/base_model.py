@@ -6,9 +6,7 @@ Definitions
 
 from datetime import datetime
 import models
-from uuid import uuid4
-
-time = "%Y-%m-%dT%H:%M:%S.%f"
+import uuid
 
 
 class BaseModel:
