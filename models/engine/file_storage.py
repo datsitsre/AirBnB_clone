@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-"""
-file storage
-"""
+"""file storage"""
 
+import uuid
 import os
 import json
 from datetime import datetime
