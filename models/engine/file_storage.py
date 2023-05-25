@@ -14,7 +14,6 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-"""
 class_list = {
               "BaseModel": BaseModel,
               "User": User,
@@ -24,7 +23,6 @@ class_list = {
               "Place": Place,
               "Review": Review
              }
-"""
 
 
 class FileStorage:
