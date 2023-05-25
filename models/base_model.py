@@ -16,20 +16,23 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """ initialized the base model creayted_id and updated_id"""
-        if kwargs:
-            for key, value in kwargs.items():
-                if key != "__class__":
-                    setattr(self, key, value)
-            if hasattr(self, "created_at") and type(self.created_at) is str:
-                self.created_at = datetime.strptime(kwargs["created_at"], time)
-            if hasattr(self, "updated_at") and type(self.updated_at) is str:
-                self.updated_at = datetime.strptime(kwargs["updated_at"], time)
+        if len(kwargs) != 0:
+            for key, item in kwargs.items():
+                if key == "__class__":
+                    continue
+                if key == "created_at":
+                    self.created_at = datetime.datetime.strptime(
+                        item, "%Y-%m-%dT%H:%M:%S.%f")
+                elif key == "updated_at":
+                    self.updated_at = datetime.datetime.strptime(
+                        item, "%Y-%m-%dT%H:%M:%S.%f")
+                else:
+                    setattr(self, key, item)
         else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = self.created_at
+            self.id = str(uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
             models.storage.new(self)
-            models.storage.save()
 
     def __str__(self):
         """Representation BaseModel class"""
